@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>By Barrio Garage</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0f172a;
+      --panel: #111827;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --accent: #22c55e;
+      --accent-dark: #15803d;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      background-image: url("img/fondo.jpeg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .overlay {
+      min-height: 100vh;
+      background: transparent;
+    }
+
+    .navbar {
+      background: #020617;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-brand {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 2rem 1rem 3rem;
+    }
+
+    .hero img {
+      width: min(100%, 900px);
+      border-radius: 16px;
+      display: block;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      border: 0;
+      border-radius: 999px;
+      padding: 0.8rem 1.2rem;
+      text-decoration: none;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn-success { background: var(--accent); color: #052e16; }
+    .btn-primary { background: #2563eb; color: white; }
+
+    .container {
+      width: min(1100px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding-bottom: 3rem;
+    }
+
+    .section-title {
+      margin: 2.2rem 0 1rem;
+      font-size: 1.4rem;
+    }
+
+    .service-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .service-card {
+      background: var(--panel);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .service-card img:hover {
+      transform: scale(1.04);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+    }
+
+    .card-body {
+      padding: 1rem 1.1rem 1.2rem;
+    }
+
+    .price-box {
+      background: var(--panel);
+      padding: 1.2rem;
+      border-radius: 16px;
+      margin-top: 0.5rem;
+    }
+
+    .price-box h3 { margin-bottom: 0.2rem; }
+    .price-box h1 { margin: 0.2rem 0 0; font-size: 2rem; }
+
+    form {
+      background: var(--panel);
+      padding: 1.2rem;
+      border-radius: 16px;
+    }
+
+    .field-group {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.35rem;
+      font-weight: 600;
+    }
+
+    input, select, button {
+      font: inherit;
+      width: 100%;
+      padding: 0.75rem 0.85rem;
+      border-radius: 10px;
+      border: 1px solid #334155;
+      background: #0f172a;
+      color: var(--text);
+    }
+
+    .actions {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      background: var(--accent);
+      color: #052e16;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem 3rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 768px) {
+      .service-grid, .field-group { grid-template-columns: 1fr; }
+      .whatsapp { right: 12px; bottom: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <nav class="navbar">
+      <a class="navbar-brand" href="#">By Barrio Garage</a>
+    </nav>
+
+    <header class="hero">
+      <img src="img/fondo.jpeg" alt="By Barrio Garage" />
+      <h1>By Barrio Garage</h1>
+      <p>Lavado • Interior • Motor • Bajo Chasis</p>
+      <a href="#confirmar-turno" class="btn btn-success">Reservar Turno</a>
+    </header>
+
+    <main class="container">
+      <h2 class="section-title">🚗 Lavados Comunes</h2>
+      <div class="service-grid">
+        <div class="service-card">
+          <img src="img/lavado1.jpeg" alt="Lavado de autos" />
+          <div class="card-body">
+            <h4>Lavado de Autos</h4>
+            <p>Lavado exterior profesional.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <img src="img/lavado2.jpeg" alt="Lavado de camionetas" />
+          <div class="card-body">
+            <h4>Lavado de Camionetas</h4>
+            <p>Limpieza completa y terminación premium.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-title">🧼 Limpieza Interior</h2>
+      <div class="service-card">
+        <img src="img/interior.jpeg" alt="Limpieza interior" />
+        <div class="card-body">
+          <h4>Limpieza Integral</h4>
+          <p>Tapizados, paneles, plásticos y detalles.</p>
+        </div>
+      </div>
+
+      <h2 class="section-title">🔧 Limpieza de Motor</h2>
+      <div class="service-card">
+        <img src="img/motor.jpeg" alt="Limpieza de motor" />
+        <div class="card-body">
+          <h4>Limpieza de Motor</h4>
+          <p>Desengre y nutrición del motor.</p>
+        </div>
+      </div>
+
+      <h2 class="section-title">🚙 Bajo Chasis</h2>
+      <div class="service-card">
+        <img src="img/chasis1.jpeg" alt="Limpieza de chasis" />
+        <img src="img/chasis2.jpeg" alt="Limpieza de chasis" />
+        <div class="card-body">
+          <h4>Limpieza Bajo Chasis</h4>
+          <p>Remoción de barro, grasa y suciedad acumulada.</p>
+        </div>
+      </div>
+
+      <h2 class="section-title">💰 Precios</h2>
+      <div class="price-box">
+        <div class="service-grid">
+          <div>
+            <h3>Autos</h3>
+            <h1>$16.000</h1>
+          </div>
+          <div>
+            <h3>Camionetas</h3>
+            <h1>$26.000</h1>
+          </div>
+        </div>
+        <p>Consultar por interior, motor, pulidos y bajo chasis.</p>
+      </div>
+
+      <h2 class="section-title" id="confirmar-turno">📅 Confirmar Turno</h2>
+      <form id="turno-form">
+        <div class="field-group">
+          <div>
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" placeholder="Tu nombre completo" required />
+          </div>
+          <div>
+            <label for="vehiculo">Vehículo</label>
+            <input type="text" id="vehiculo" placeholder="Marca y modelo" required />
+          </div>
+          <div>
+            <label for="servicio">Servicio</label>
+            <select id="servicio" required>
+              <option value="">Selecciona un servicio</option>
+              <option>Lavado de Autos</option>
+              <option>Lavado de Camionetas</option>
+              <option>Limpieza Interior</option>
+              <option>Limpieza de Motor</option>
+              <option>Limpieza Bajo Chasis</option>
+            </select>
+          </div>
+          <div>
+            <label for="fecha">Fecha</label>
+            <input type="date" id="fecha" required />
+          </div>
+        </div>
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Confirmar Turno</button>
+        </div>
+      </form>
+    </main>
+
+    <a href="https://wa.me/5491150406191" class="btn whatsapp" aria-label="WhatsApp">WhatsApp</a>
+
+    <footer>
+      <h4>By Barrio Garage</h4>
+      <p>Villa La Florida - Quilmes Oeste</p>
+      <p>Instagram: @bybarriogarage</p>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const dateInput = document.getElementById('fecha');
+      if (dateInput) {
+        const today = new Date();
+        const todayString = today.toISOString().slice(0, 10);
+        dateInput.min = todayString;
+
+        const oneMonth = new Date(today);
+        oneMonth.setMonth(oneMonth.getMonth() + 1);
+        dateInput.max = oneMonth.toISOString().slice(0, 10);
+      }
+
+      const form = document.getElementById('turno-form');
+      if (!form) return;
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const nombre = document.getElementById('nombre').value.trim();
+        const vehiculo = document.getElementById('vehiculo').value.trim();
+        const servicio = document.getElementById('servicio').value;
+        const fecha = document.getElementById('fecha').value;
+
+        if (!nombre || !vehiculo || !servicio || !fecha) {
+          alert('Por favor completa todos los datos del formulario.');
+          return;
+        }
+
+        const selectedDate = new Date(fecha);
+        const minDate = new Date(dateInput.min);
+        const maxDateValue = new Date(dateInput.max);
+        if (selectedDate < minDate || selectedDate > maxDateValue) {
+          alert('La fecha debe estar entre hoy y dentro de un mes.');
+          return;
+        }
+
+        const resumen = `Por favor confirma tu turno:\n\nNombre: ${nombre}\nVehículo: ${vehiculo}\nServicio: ${servicio}\nFecha: ${fecha}`;
+        if (confirm(resumen)) {
+          const texto = `Hola ivan%0A%0ANombre: ${encodeURIComponent(nombre)}%0AVeh%C3%ADculo: ${encodeURIComponent(vehiculo)}%0AServicio: ${encodeURIComponent(servicio)}%0AFecha: ${encodeURIComponent(fecha)}`;
+          window.location.href = `https://wa.me/5491150406191?text=${texto}`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
